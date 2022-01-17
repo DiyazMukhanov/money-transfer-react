@@ -1,14 +1,17 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import {userActions} from '../store/index';
+import TransferItemList from "./TransferItemList";
 
 const TransferItems = props => {
-  const useDispatch = useDispatch();
-  const usersData = useSelector(state => state.usersData);
+ const currentTransfers = useSelector(state => state.users.currentTransfers);
+  // const currentTransfers = useSelector(state => state.users.usersData[currentUserIndex].transfers); 
+
 
   return <div>
+    <h1>Test</h1>
       <ul>
-      {/* {currentUserTransfers.map((transfer, i) => <li><div></div><span>{i+1} {transfer<0 ? }</span><div>{transfer}</div></li>)} */}
+       {currentTransfers.map(transfer => <TransferItemList transfer = {transfer}/>)}
       </ul>
       </div>
 };
