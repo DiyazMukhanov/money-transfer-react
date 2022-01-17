@@ -6,7 +6,7 @@ import {userActions} from '../store/index';
 
 const OpsTransfer = props => {
     const dispatch = useDispatch();
-    const usersData = useSelector(state => state.users.usersData);
+    const currentTransfers = useSelector(state => state.users.currentTransfers);
 
     const enteredToRef = useRef();
     const enteredAmountRef = useRef();
@@ -15,10 +15,9 @@ const OpsTransfer = props => {
   const moneyTransferHandler = (event) => {
       event.preventDefault();
       const enteredTo = enteredToRef.current.value;
-      const enteredAmount = -enteredAmountRef.current.value;
+      const enteredAmount = +enteredAmountRef.current.value;
       const payloadData = {to: enteredTo, amount: enteredAmount };
       dispatch(userActions.transfer(payloadData));
-      console.log(usersData);
   }
 
 

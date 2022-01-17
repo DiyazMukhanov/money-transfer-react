@@ -51,10 +51,14 @@ const initialUsersDataState = {
             //  console.log(current(state.currentTransfers));
            },
 
-        //    transfer(state, action){
-        //        const currentUserIndex = state.currentUserIndex;
-        //        state.usersData[currentUserIndex].transfers.unshift(action.payload.amount);
-        //    }
+           transfer(state, action){
+               const currentUserIndex = state.loggedInIndex;
+               const sentToUserIndex = state.users.indexOf(action.payload.to);
+               console.log('sent to index ' + sentToUserIndex);
+               state.usersData[currentUserIndex].transfers.unshift(action.payload.amount * -1);
+               state.currentTransfers = state.usersData[currentUserIndex].transfers;
+               state.usersData[sentToUserIndex].transfers.unshift(action.payload.amount);
+           }
           
        }
    });
